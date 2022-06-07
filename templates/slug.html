@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'header.html' %}
+    {% block content %}
+    <span>This is article {{article_number}} with text: {{slug_text}}</span>
+    {% endblock %}
+    {% include 'addmainlink.html' %}
+</body>
+</html>

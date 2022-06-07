@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOMEWORK_29</title>
+    <style>
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 30px;
+            margin-top: -20px;
+        }
+        .number {
+            width: 180px;
+            height: 75px;
+            border:2px solid blue;
+            border-radius: 15px;
+            font-size: 15px;
+            color: green;
+            transition: font-size 0.3s linear;
+            transition: background-color 0.3s linear;
+        }
+        .slug {
+            width: 180px;
+            height: 75px;
+            border:2px solid blue;
+            border-radius: 15px;
+            font-size: 15px;
+            color: green;
+            transition: font-size 0.3s linear;
+            transition: background-color 0.3s linear;
+        }
+        .slug:hover {
+            font-size: 115%;
+            color: blue;
+            background-color: yellow;
+}
+        .number:hover {
+            font-size: 115%;
+            color: blue;
+           background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    {% extends 'header.html' %}
+    {% block content %}
+    <div class="buttons"; style="background-color: gainsboro"; >
+        <form action="{% url 'article' 77 %}" target="_blank">
+            <button class="number">
+                <p>Random article</p>
+            </button>
+        </form>
+        <form action="{% url 'random_slug' 65 'jhfaiuejfj' %}" target="_blank">
+            <button class="slug">
+                <p>Random article with slug</p>
+            </button>
+        </form>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

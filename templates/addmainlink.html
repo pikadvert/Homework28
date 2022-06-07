@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+        background-color: blue;
+        text-align: center;
+        padding:20px;}
+        .main_button {
+            width: 120px;
+            height: 60px;
+            border:2px solid green;
+            border-radius: 15px;
+            font-size: 13px;
+            color: green;
+            transition: background-color 0.3s linear;
+            z-index: 10;}
+        .main_button:hover {
+            color: white;
+            background-color: gray;}
+    </style>
+</head>
+<body>
+    <div class="main"; style="background-color: gainsboro"; >
+        <form action="{% url 'main' %}" target="_blank">
+            <button class="main_button">
+                <p>Title page</p>
+            </button>
+        </form>
+</body>
+</html>
