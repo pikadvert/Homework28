@@ -37,16 +37,16 @@ def article_text(request, article_number, slug_text=''):
                                                                               'slug_text': slug_text})
 
 
-def random_slug(request):
-    letters = string.ascii_lowercase
-    rand_slug = ''.join(random.choice(letters) for i in range(10))
-    print(rand_slug)
-    return render(request, 'main.html', {'rand_slug': rand_slug})
-
-def random_num(request):
-    rand_num = random.randint(0, 100)
-    print(rand_num)
-    return render(request, 'main.html', {'rand_num': rand_num})
+# def random_slug(request):
+#     letters = string.ascii_lowercase
+#     rand_slug = ''.join(random.choice(letters) for i in range(10))
+#     print(rand_slug)
+#     return render(request, 'main.html', {'rand_slug': rand_slug})
+#
+# def random_num(request):
+#     rand_num = random.randint(0, 100)
+#     print(rand_num)
+#     return render(request, 'main.html', {'rand_num': rand_num})
 
 
 def phoneregex(request, text2):

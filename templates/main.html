@@ -46,18 +46,24 @@
 <body>
     {% extends 'header.html' %}
     {% block content %}
+    {% with num='1234567890' seq='abcdefghijklmnopqrstuvwxyz' %}
+         {% with id1=num|random id2=num|random id3=num|random id4=num|random s1=seq|random s2=seq|random s3=seq|random s4=seq|random s5=seq|random %}
+             {% with id=id1|add:id2|add:id3|add:id4 slug=s1|add:s2|add:s3|add:s4|add:s5 %}
     <div class="buttons"; style="background-color: gainsboro"; >
-        <form action="{% url 'article' 77 %}" target="_blank">
+        <form action="{% url 'article' id %}" target="_blank">
             <button class="number">
                 <p>Random article</p>
             </button>
         </form>
-        <form action="{% url 'random_slug' 65 'jhfaiuejfj' %}" target="_blank">
+        <form action="{% url 'random_slug' id slug %}" target="_blank">
             <button class="slug">
                 <p>Random article with slug</p>
             </button>
         </form>
     </div>
+                 {% endwith %}
+             {% endwith %}
+        {% endwith %}
     {% endblock %}
 
 </body>
