@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOMEWORK_29</title>
+    <style>
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 30px;
+            margin-top: -20px;
+        }
+        .number {
+            width: 180px;
+            height: 75px;
+            border:2px solid blue;
+            border-radius: 15px;
+            font-size: 15px;
+            color: green;
+            transition: font-size 0.3s linear;
+            transition: background-color 0.3s linear;
+        }
+        .slug {
+            width: 180px;
+            height: 75px;
+            border:2px solid blue;
+            border-radius: 15px;
+            font-size: 15px;
+            color: green;
+            transition: font-size 0.3s linear;
+            transition: background-color 0.3s linear;
+        }
+        .slug:hover {
+            font-size: 115%;
+            color: blue;
+            background-color: yellow;
+}
+        .number:hover {
+            font-size: 115%;
+            color: blue;
+           background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    {% extends 'header.html' %}
+    {% block content %}
+    {% with num='1234567890' seq='abcdefghijklmnopqrstuvwxyz' %}
+         {% with id1=num|random id2=num|random id3=num|random id4=num|random s1=seq|random s2=seq|random s3=seq|random s4=seq|random s5=seq|random %}
+             {% with id=id1|add:id2|add:id3|add:id4 slug=s1|add:s2|add:s3|add:s4|add:s5 %}
+    <div class="buttons"; style="background-color: gainsboro"; >
+        <form action="{% url 'article' id %}" target="_blank">
+            <button class="number">
+                <p>Random article</p>
+            </button>
+        </form>
+        <form action="{% url 'random_slug' id slug %}" target="_blank">
+            <button class="slug">
+                <p>Random article with slug</p>
+            </button>
+        </form>
+    </div>
+                 {% endwith %}
+             {% endwith %}
+        {% endwith %}
+    {% endblock %}
+
+</body>
+</html>

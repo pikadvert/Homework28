@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        BODY {
+        background-color: aqua;
+        -webkit-background-size: cover;
+        background-size: cover;
+ }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color:yellow; font-size: 30px; background-color: blue; padding: 20px; text-align: center;">HOMEWORK: lesson 29</h1>
+    </div>
+
+    <div style="background-color: gainsboro; padding: 10px; color: green">
+        {% block content %}
+        {% endblock %}
+        {% include 'addmainlink.html' %}
+    </div>
+</body>
+</html>

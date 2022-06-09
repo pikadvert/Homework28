@@ -18,10 +18,18 @@ from django.urls import path, include, re_path
 from myapp.views import main, phoneregex, newregex
 
 urlpatterns = [
+<<<<<<< HEAD
     path('', main),
+=======
+    path('', main, name='main'),
+>>>>>>> homework29
     path('users/', include('myapp.urlsusers')),
     path('article/', include('myapp.urls')),
     re_path(r'^(?P<text2>(044|050|063|066|067|095|097|099)\d{7}$)', phoneregex),
     re_path(r'^(?P<text>[a-z1-9]{4}[\-]{1}[a-z1-9]{6}$)', newregex),
     path('articles/', include('myapp.urls2')),
+<<<<<<< HEAD
+=======
+
+>>>>>>> homework29
 ]
