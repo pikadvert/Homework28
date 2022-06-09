@@ -54,4 +54,3 @@ def phoneregex(request, text2):
 
 def newregex(request, text):
     return HttpResponse(f"it's regexp with text: {text}")
-
