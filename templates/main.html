@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HOMEWORK_29</title>
+    <title>HOMEWORK</title>
     <style>
         .buttons {
             display: flex;
@@ -40,7 +40,21 @@
             color: blue;
            background-color: yellow;
         }
-
+.hw {
+            width: 180px;
+            height: 75px;
+            border:2px solid blue;
+            border-radius: 15px;
+            font-size: 15px;
+            color: green;
+            transition: font-size 0.3s linear;
+            transition: background-color 0.3s linear;
+        }
+        .hw:hover {
+            font-size: 115%;
+            color: blue;
+            background-color: yellow;
+}
     </style>
 </head>
 <body>
@@ -50,6 +64,11 @@
          {% with id1=num|random id2=num|random id3=num|random id4=num|random s1=seq|random s2=seq|random s3=seq|random s4=seq|random s5=seq|random %}
              {% with id=id1|add:id2|add:id3|add:id4 slug=s1|add:s2|add:s3|add:s4|add:s5 %}
     <div class="buttons"; style="background-color: gainsboro"; >
+        <form action="{% url 'hw31' %}" target="_blank">
+            <button class="hw">
+                <p>HOMEWORK 31</p>
+            </button>
+        </form>
         <form action="{% url 'article' id %}" target="_blank">
             <button class="number">
                 <p>Random article</p>
