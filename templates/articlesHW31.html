@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW31</title>
+    <style>
+      li {
+        list-style:none;}
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block content %}
+    <span>Homework 31 is done: </span>
+
+    <ol>
+<li>Exercise 1: Last 5 comments.</li>
+    <ul>
+      {% for comment in fivelastcomms %}
+        <li>{{ comment.text }}</li>
+      {% endfor %}
+    </ul>
+    <br>
+
+<li>Exercise 2: Сreate 5 comments.</li>
+    <ul>
+      <li>Done</li>
+    </ul>
+    <br>
+
+<li>Exercise 3: Сhange the comment date.</li>
+    <ul>
+      <li>Done in models.py</li>
+    </ul>
+    <br>
+
+<li>Exercise 4: Сhange comments with "Start", "Middle", "Finish".</li>
+    <ul>
+      <li>Comment.objects.filter(text__contains='Start').update(text='Forget')</li>
+      <li>Comment.objects.filter(text__contains='Middle').update(text='You are at the beginning of your journey')</li>
+      <li>Comment.objects.filter(text__contains='Finish').update(text='No need to stop at the finish line')</li>
+    </ul>
+    <br>
+
+
+
+<li>Exercise 5: Delete comments by parameters.</li>
+    <ul>
+      <li>Comment.objects.filter(text__contains='k').exclude(text__contains='c').delete()</li>
+    </ul>
+    <br>
+
+
+
+<li>Exercise 6: Get comments on parameters.</li>
+    <ul>
+      {% for comment in comments %}
+        <li>{{ comment.text }}</li>
+      {% endfor %}
+    </ul>
+
+
+</ol>
+
+    {% endblock %}
+</body>
+</html>
+
