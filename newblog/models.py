@@ -8,55 +8,25 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 class User(models.Model):
     name = models.CharField(max_length=100)
 
-# class Like(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
-#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-#     object_id = models.PositiveSmallIntegerField()
-#     content_object = GenericForeignKey('content_type', 'object_id')
-#
-# class Dislike(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='dislikes')
-#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-#     object_id = models.PositiveSmallIntegerField()
-#     content_object = GenericForeignKey('content_type', 'object_id')
 
-class Article_new(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=10000)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     a_like = GenericRelation('LikeDislike', related_query_name='article_new')
-    # a_likes = GenericRelation(Like, related_query_name='article_new')
-    # a_dislikes = GenericRelation(Dislike, related_query_name='article_new')
+
 
 class Comment(models.Model):
-    article = models.ForeignKey(Article_new, on_delete=models.CASCADE, related_name='comment')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    name = models.CharField(max_length=100)
-    body = models.TextField(max_length=1000)
-    c_like = GenericRelation('LikeDislike', related_query_name='comment')
-    # c_likes = GenericRelation(Like, related_query_name='comment')
-    # c_dislikes = GenericRelation(Dislike, related_query_name='comment')
-
-    class Meta:
-        ordering = ['article']
+    text = models.CharField(max_length=1000)
+    article = models.ForeignKey(Article, on_delete=models.DO_NOTHING)
+    comment = models.ForeignKey('newblog.Comment', null=True, blank=True, on_delete=models.DO_NOTHING,
+                                related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    comment_like = GenericRelation('LikeDislike', related_query_name='comments')
 
     def __str__(self):
-        return self.name
+        return "{} by {}".format(self.text, self.user)
 
-class Note(models.Model):
-    note = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='note')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='noteusr')
-    name = models.CharField(max_length=100)
-    body = models.TextField(max_length=1000)
-    n_like = GenericRelation('LikeDislike', related_query_name='note')
-    # n_likes = GenericRelation(Like, related_query_name='note')
-    # n_dislikes = GenericRelation(Dislike, related_query_name='note')
-
-    class Meta:
-        ordering = ['note']
-
-    def __str__(self):
-        return self.name
 
 class LikeDislike(models.Model):
     LIKE = 1
@@ -69,7 +39,6 @@ class LikeDislike(models.Model):
 
     vote = models.SmallIntegerField(choices=VOTES, default=LIKE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')

@@ -5,5 +5,5 @@ class Book(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=120)
-    book = models.OneToOneField(Book, on_delete=models.CASCADE, related_name='auth')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='auth')
 

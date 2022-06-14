@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Author1(models.Model):
+class Author(models.Model):
     name = models.CharField(max_length=120)
 
     class Meta:
@@ -14,9 +14,9 @@ class Author1(models.Model):
 class Reader(models.Model):
     name = models.CharField(max_length=120)
 
-class Book1(models.Model):
+class Book(models.Model):
     nameofbook = models.CharField(max_length=120)
-    author = models.ManyToManyField(Author1, related_name='author')
+    author = models.ManyToManyField(Author, related_name='author')
     reader = models.ManyToManyField(Reader, related_name='reader')
     available = models.BooleanField(default=False, name='book available')
 
